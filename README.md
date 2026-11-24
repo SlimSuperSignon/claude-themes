@@ -6,11 +6,13 @@ The themes people have published for the **Theme Gallery** plugin for Claude. Th
 
 In Claude, with the Theme Gallery plugin installed:
 
+This community is the plugin's default, so there is nothing to set up. If you chose another community earlier, come back with:
+
 ```
-/themes community OWNER/REPO
+/themes community SlimSuperSignon/claude-themes
 ```
 
-Replace `OWNER/REPO` with this repository's name. Then open `/themes`: every theme here is on the Community shelf with a preview and its about page, and **Add** downloads one and turns it on. No account is needed.
+Then open `/themes`: every theme here is on the Community shelf with a preview and its about page, and **Add** downloads one and turns it on. No account is needed.
 
 ## Publish a theme
 
@@ -47,13 +49,12 @@ A submission is a GitHub issue. The workflow checks the theme and, when it passe
    git init -b main
    git add .
    git commit -m "Start the theme community"
-   git remote add origin https://github.com/OWNER/REPO.git
+   git remote add origin https://github.com/SlimSuperSignon/claude-themes.git
    git push -u origin main
    ```
 
 2. On GitHub, open **Settings → Actions → General → Workflow permissions**. Choose **Read and write permissions** and tick **Allow GitHub Actions to create and approve pull requests**. Without this, submissions are checked but no pull request is opened.
-3. Replace `OWNER/REPO` in this README with the repository's name.
-4. Add a license file if you want one. The submission form asks creators to confirm a theme is their own work and free for anyone to use.
+3. Add a license file if you want one. The submission form asks creators to confirm a theme is their own work and free for anyone to use.
 
 ### Approving a theme
 
