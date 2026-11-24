@@ -1,0 +1,27 @@
+name: Submit a theme
+description: Publish a theme to the community, or update one you published
+title: "Theme: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Paste the whole contents of your `.cctheme.json` file below and press **Create**.
+        It is checked automatically within a minute, and a comment here tells you the result.
+        A theme that passes goes live once a maintainer approves it.
+
+        To update a theme you published, submit it again under the same name.
+  - type: textarea
+    id: theme
+    attributes:
+      label: Theme file
+      description: The contents of the file `/themes export <name>` wrote.
+      render: json
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before you submit
+      options:
+        - label: This theme is my own work, and I am happy for anyone to use it.
+          required: true

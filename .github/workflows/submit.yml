@@ -1,0 +1,70 @@
+name: Theme submission
+
+# A "Submit a theme" issue is checked here and, when it passes, becomes a pull
+# request for a maintainer to approve. Nothing from the issue is ever put into
+# a command: it reaches the script through the environment only.
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: submit-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  intake:
+    if: contains(github.event.issue.body, '### Theme file')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Check the theme
+        id: intake
+        continue-on-error: true
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: node scripts/intake.mjs
+
+      - name: Open or update the pull request
+        if: steps.intake.outputs.accepted == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          THEME_SLUG: ${{ steps.intake.outputs.slug }}
+        run: |
+          branch="submit/issue-${ISSUE_NUMBER}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add themes owners.json index.json
+          git commit -m "Add theme ${THEME_SLUG} (#${ISSUE_NUMBER})"
+          git push --force origin "$branch"
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create --base main --head "$branch" \
+              --title "Theme: ${THEME_SLUG}" \
+              --body "Submitted by @${ISSUE_AUTHOR} in #${ISSUE_NUMBER}. The file passed every automatic check. Read its about page before merging. Closes #${ISSUE_NUMBER}."
+          fi
+
+      - name: Tell the creator
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          if [ -f intake-result.md ]; then
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file intake-result.md
+          fi

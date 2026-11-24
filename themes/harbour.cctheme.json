@@ -1,0 +1,37 @@
+{
+  "format": "claude-theme/1",
+  "name": "Harbour",
+  "author": "Theme Gallery",
+  "description": "Still water at dusk, with a soft glow on the horizon",
+  "about": "# Harbour\n\nThe first community theme, here so the shelf is never empty and so creators have a file to read.\n\nSlate-blue surfaces a few shades apart, a lantern-amber accent, and a gradient that runs from the page into a faint wash of the accent.\n\n- Works in light and dark\n- Shows a gradient background made of palette names, so one background serves both modes",
+  "roles": {
+    "accent": "#b7791f",
+    "danger": "#b8474a",
+    "success": "#4c8a6a",
+    "warning": "#a8762a",
+    "pro": "#7a68a8"
+  },
+  "light": {
+    "surface-0": "#e2e8ee",
+    "surface-1": "#eaeff4",
+    "surface-2": "#f3f6f9",
+    "text-primary": "#1b2530",
+    "text-secondary": "#3c4a58",
+    "text-muted": "#54626f"
+  },
+  "dark": {
+    "surface-0": "#141a21",
+    "surface-1": "#1a222a",
+    "surface-2": "#212a33",
+    "surface-3": "#27313b",
+    "text-primary": "#e3eaf1",
+    "text-secondary": "#bbc7d2",
+    "text-muted": "#97a5b2"
+  },
+  "background": {
+    "gradient": {
+      "stops": ["surface-0", { "at": 0.75, "color": "surface-1" }, "bg-accent"],
+      "angle": 160
+    }
+  }
+}

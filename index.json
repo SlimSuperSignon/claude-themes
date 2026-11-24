@@ -1,0 +1,54 @@
+{
+  "format": "claude-theme-index/1",
+  "themes": [
+    {
+      "file": "themes/harbour.cctheme.json",
+      "extras": [
+        "gradient background"
+      ],
+      "card": {
+        "format": "claude-theme/1",
+        "name": "Harbour",
+        "author": "Theme Gallery",
+        "description": "Still water at dusk, with a soft glow on the horizon",
+        "roles": {
+          "accent": "#b7791f",
+          "danger": "#b8474a",
+          "success": "#4c8a6a",
+          "warning": "#a8762a",
+          "pro": "#7a68a8"
+        },
+        "light": {
+          "surface-0": "#e2e8ee",
+          "text-primary": "#1b2530",
+          "surface-1": "#eaeff4",
+          "surface-2": "#f3f6f9",
+          "text-secondary": "#3c4a58",
+          "text-muted": "#54626f"
+        },
+        "dark": {
+          "surface-0": "#141a21",
+          "text-primary": "#e3eaf1",
+          "surface-1": "#1a222a",
+          "surface-2": "#212a33",
+          "surface-3": "#27313b",
+          "text-secondary": "#bbc7d2",
+          "text-muted": "#97a5b2"
+        },
+        "background": {
+          "gradient": {
+            "stops": [
+              "surface-0",
+              {
+                "at": 0.75,
+                "color": "surface-1"
+              },
+              "bg-accent"
+            ],
+            "angle": 160
+          }
+        }
+      }
+    }
+  ]
+}
