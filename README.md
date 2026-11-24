@@ -4,7 +4,13 @@ The themes people have published for the **Theme Gallery** plugin for Claude. Th
 
 ## Use these themes
 
-In Claude, with the Theme Gallery plugin installed:
+Install the [Theme Gallery](https://github.com/SlimSuperSignon/theme-gallery) plugin. At the prompt of a Claude Code terminal session:
+
+```
+/plugin install theme-gallery --marketplace SlimSuperSignon/theme-gallery
+```
+
+In the Claude desktop app: click **+** next to the prompt box, then **Plugins**, **Add marketplace** with `SlimSuperSignon/theme-gallery`, then **Add plugin**.
 
 This community is the plugin's default, so there is nothing to set up. If you chose another community earlier, come back with:
 
