@@ -1,0 +1,3 @@
+# One line ending on every machine, so index.json compares byte for byte
+# between a contributor's checkout and the workflows.
+* text=auto eol=lf
